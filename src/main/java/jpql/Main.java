@@ -1,5 +1,6 @@
 package jpql;
 
+import javax.persistence.EntityManager;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -7,20 +8,14 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        int sum = 0;
-        int count = 0;
-        String str;
+        String query = "select " +
+                "case when m.age <= 10 then '학생요금' " +
+                " when m.age >= 60 then '경로요금' " +
+                " else '일반요금' " +
+                "end " +
+                "from Member m";
 
-        Scanner sc = new Scanner(System.in);
-        count = sc.nextInt();
-        str = sc.next();
-
-        char[] ch = str.toCharArray();
-
-        for (char c : ch) {
-            sum += c-48;
-        }
-
-        System.out.println(sum);
+       // List<String> result = em.createQuery(query, String.class)
+          //      .getResultList();
     }
 }
